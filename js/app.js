@@ -1,8 +1,11 @@
-define(["util/bindAll", "game"], function(bindAll, Game) {
+define(["util/bindAll", "Game"], function(bindAll, Game) {
    "use strict";
 
     function App() {
         bindAll(this);
+    }
+
+    App.prototype.init = function() {
         this.game = new Game();
 
         // create a renderer instance.
@@ -12,12 +15,11 @@ define(["util/bindAll", "game"], function(bindAll, Game) {
         document.body.appendChild(this.renderer.view);
 
         this.requestFrame();
-    }
+    };
 
     App.prototype.requestFrame = function() {
-        this.renderer.render(this.game);
-        console.log("request Frame");
         window.requestAnimationFrame(this.requestFrame);
+        this.renderer.render(this.game);
     };
 
     return App;

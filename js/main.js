@@ -1,13 +1,26 @@
 requirejs.config({
     baseUrl: "js",
     paths: {
-        pixi: "lib/pixi"
+        pixi: "lib/pixi",
+        timeline: "lib/TimelineLite",
+        tween: "lib/TweenLite"
     }
 });
 
-requirejs(["pixi", "app"],
+requirejs(["pixi", "App"],
 function (pixi, App) {
-    console.log("main");
+
     var app = new App();
+
+    WebFont.load({
+        google: {
+            families: ["Orbitron"]
+        },
+        active: function() {
+            app.init();
+        }
+
+    });
+
 });
 
